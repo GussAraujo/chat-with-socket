@@ -66,3 +66,12 @@ O cliente permite:
 - Conectar-se ao servidor.
 - Enviar e receber mensagens.
 - Autenticar-se com senha e nome de usuário.
+
+## Motivação da Escolha do Protocolo de Transporte
+
+O protocolo escolhido foi o **TCP (Transmission Control Protocol)** devido às suas características de:
+- **Confiabilidade:** O TCP garante que as mensagens sejam entregues corretamente e na ordem correta.
+- **Controle de fluxo:** Ele gerencia a taxa de envio para evitar sobrecarregar o receptor.
+- **Persistência de conexão:** O TCP estabelece uma conexão contínua, essencial para a comunicação em tempo real de um chat.
+
+Essas características tornam o TCP ideal para aplicações onde a entrega precisa e ordenada de mensagens é fundamental, como em um sistema de chat.
