@@ -8,7 +8,7 @@ usernames = {}
 def handle_client(client, addr):
     try:
         senha_recebida = client.recv(2048).decode('utf-8')
-        if senha_recebida != "a":
+        if senha_recebida != "123456":
             client.send("Senha incorreta. Conexão recusada.".encode('utf-8'))
             client.close()
             return
