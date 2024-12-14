@@ -75,3 +75,48 @@ O protocolo escolhido foi o **TCP (Transmission Control Protocol)** devido às s
 - **Persistência de conexão:** O TCP estabelece uma conexão contínua, essencial para a comunicação em tempo real de um chat.
 
 Essas características tornam o TCP ideal para aplicações onde a entrega precisa e ordenada de mensagens é fundamental, como em um sistema de chat.
+
+## **Fluxo de Comunicação Técnico**
+
+### **Estabelecimento de Conexão**
+1. O cliente inicia uma conexão TCP com o servidor na porta `5000`.
+2. Após a conexão, o servidor aguarda a senha enviada pelo cliente.
+3. Se a senha estiver correta, o servidor aceita a conexão e solicita o nome de usuário.
+
+### **Troca de Mensagens**
+1. **Mensagens Públicas:**
+   - O cliente envia mensagens públicas com o formato `[timestamp] <username> mensagem`.
+   - O servidor retransmite essas mensagens para todos os outros clientes conectados, exceto para o remetente.
+
+2. **Mensagens Privadas:**
+   - O cliente utiliza o comando `@privado: <destinatário> <mensagem>`.
+   - O servidor verifica o destinatário na lista de clientes conectados.
+     - Se encontrado, o servidor encaminha a mensagem ao destinatário.
+     - Caso contrário, o servidor informa ao remetente que o usuário não foi encontrado.
+
+3. **Sair do Chat:**
+   - O cliente envia o comando `@sair`.
+   - O servidor remove o cliente da lista de conexões e notifica os demais usuários sobre a saída.
+
+### **Tratamento de Erros**
+1. **Conexão Perdida:**
+   - Se um cliente desconectar inesperadamente, o servidor remove o cliente da lista e notifica os demais.
+
+2. **Destinatário Não Encontrado:**
+   - O servidor retorna uma mensagem ao remetente indicando que o destinatário não está conectado.
+
+3. **Senha Incorreta:**
+   - O servidor encerra a conexão imediatamente se a senha estiver errada.
+
+---
+
+## **Erros Comuns**
+
+- **Senha Incorreta:**
+  - Certifique-se de usar a senha `123456` ao conectar-se ao servidor.
+
+- **Destinatário de Mensagem Privada Não Encontrado:**
+  - Verifique o nome do destinatário antes de enviar uma mensagem privada.
+
+- **Servidor Não Iniciado:**
+  - Certifique-se de que o servidor foi iniciado antes de executar o cliente.
